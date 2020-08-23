@@ -2,4 +2,4 @@
 - name: Cleaning up AWS
   hosts: localhost
   roles:
-    - cleanup aws
+    - cleanup-aws
