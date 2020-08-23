@@ -1,0 +1,5 @@
+---
+- name: Creating Security Group
+  hosts: localhost
+  roles:
+    - aws-create-sg

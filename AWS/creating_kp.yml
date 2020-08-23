@@ -1,0 +1,5 @@
+---
+- name: Creating Key Pair
+  hosts: localhost
+  roles:
+    - aws-create-keypair
