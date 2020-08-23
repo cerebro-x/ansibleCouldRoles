@@ -1,0 +1,5 @@
+--- 
+- name: Cleaning up AWS
+  hosts: localhost
+  roles:
+    - cleanup aws
