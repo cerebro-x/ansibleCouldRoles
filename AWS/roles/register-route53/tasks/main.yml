@@ -1,0 +1,7 @@
+---
+# tasks file for provision_sg
+
+#Register Route 53
+- name: Register Instances to Route53
+  include_tasks: register_route53.yml
+

@@ -1,0 +1,4 @@
+---
+# tasks file for gcp-create-disk
+- name: Create a disk for the GCP Instance
+  include_tasks: gcp_create_disk.yml

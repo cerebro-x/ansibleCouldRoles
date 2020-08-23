@@ -1,0 +1,5 @@
+---
+# vars file for register-route53
+ec2_name_tag: "{{ ec2_name_tag_choice | default('Ansible_Created_EC2') }}"
+ec2_provisioner_tag: Ansible
+ec2_region: "{{ ec2_region_choice | default('us-east-1') }}"

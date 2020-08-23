@@ -1,0 +1,21 @@
+---
+- name: Gather the instance IPs
+  ec2_remote_facts:
+    region: "{{ ec2_region }}"
+    filters:
+      instance-state-name: running
+      "tag:Name": "{{ ec2_name_tag }}"
+      "tag:Provisioner": "Ansible"
+  register: ec2
+  check_mode: no
+
+- name: Register IP addresses to Route 53
+  route53:
+    state: present
+    zone: "{{ route53_zone }}"
+    record: "{{ ec2_name_tag }}.{{ route53_zone }}"
+    type: A
+    overwrite: yes
+    ttl: 7200
+    value: "{{ ec2.instances|map(attribute='public_ip_address')|join(',') }}"
+    wait: yes

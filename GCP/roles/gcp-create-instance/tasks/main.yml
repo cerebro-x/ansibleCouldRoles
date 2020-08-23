@@ -1,0 +1,4 @@
+---
+# tasks file for gcp-create-instance
+- name: Provision GCP Instance
+  include_tasks: gcp_create_instance.yml

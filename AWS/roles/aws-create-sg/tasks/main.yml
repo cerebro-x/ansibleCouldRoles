@@ -1,0 +1,7 @@
+---
+# tasks file for provision_sg
+
+#Create SG
+- name: Create Security Group {{ sg_name }} in {{ aws_region }}
+  include_tasks: aws_create_sg.yml
+

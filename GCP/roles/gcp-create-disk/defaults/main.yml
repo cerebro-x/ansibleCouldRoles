@@ -1,0 +1,17 @@
+---
+# defaults file for gcp-create-disk
+gcp_zone: us-central1-a
+gcp_region: us-central1
+gcp_name_tag: ansible-created
+
+#Disk Vars
+gcp_disk_size: 20
+gcp_disk_source_image: projects/rhel-cloud/global/images/family/rhel-7
+
+instance_os: rhel7
+
+gcp_image:
+  rhel7: projects/rhel-cloud/global/images/family/rhel-7
+  win2012: projects/windows-cloud/global/images/family/windows-2012-r2
+
+gcp_disk_source_image: projects/rhel-cloud/global/images/family/rhel-7

@@ -1,0 +1,15 @@
+---
+- name: Create a disk using the {{ gcp_disk_source_image }} boot image for the new compute instance
+  gcp_compute_disk:
+    name: "{{ gcp_name_tag }}"
+    size_gb: "{{ gcp_disk_size }}"
+    source_image: "{{ gcp_disk_source_image }}"
+    zone: "{{ gcp_zone }}"
+    state: present
+  register: created_disk
+
+- name: setting stats for newly created disk
+  set_stats:
+    data:
+      disk: "{{ created_disk }}"
+  when: created_disk is defined

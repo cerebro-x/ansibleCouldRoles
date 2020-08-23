@@ -1,0 +1,19 @@
+---
+# vars file for gcp-create-disk
+#General Vars
+gcp_zone: "{{ gcp_zone_choice | default('us-central1-a') }}"
+gcp_region: "{{ gcp_region_choice | default('us-central1') }}"
+gcp_name_tag: "{{ gcp_name_tag_choice | default('ansible-created') }}"
+
+#Disk Vars
+gcp_disk_size: "{{ gcp_disk_size_choice | default(20) }}"
+instance_os: "{{ instance_os_choice | default('rhel7') }}"
+
+gcp_image:
+  rhel7: projects/rhel-cloud/global/images/family/rhel-7
+  win2012: projects/windows-cloud/global/images/family/windows-2012-r2
+
+gcp_disk_source_image: "{{ gcp_image[instance_os] }}"
+#gcp_disk_source_image: "{{ gcp_disk_source_image_choice | default('projects/rhel-cloud/global/images/family/rhel-7') }}"
+#gcp_disk_source_image: "{{ gcp_disk_source_image_choice | default('projects/windows-cloud/global/images/family/windows-2012-r2') }}"
+

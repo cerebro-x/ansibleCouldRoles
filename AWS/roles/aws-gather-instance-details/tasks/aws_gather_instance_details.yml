@@ -1,0 +1,17 @@
+---
+# tasks file for aws_gather_instance_details.yml
+
+- ec2_instance_facts:
+    region: "{{ ec2_region }}"
+    filters:
+      "tag:Name": "{{ ec2_name_tag }}"
+      "tag:Provisioner": "{{ ec2_provisioner_tag }}"
+      "tag:Created": "{{ ec2_created_tag }}"
+      instance-state-name: running
+  register: ec2
+
+- name: Create Inventory Group to login dynamically to EC2 Instance
+  add_host: 
+    hostname: "{{ item.public_ip_address }}"
+    groupname: ec2_server
+  loop: "{{ ec2.instances }}"

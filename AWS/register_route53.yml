@@ -1,0 +1,8 @@
+---
+- name: Register Instances to Route53
+  hosts: localhost
+  vars_files:
+    vars/register_route53_vars.yml
+  roles:
+    - register-route53
+

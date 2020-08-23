@@ -1,0 +1,65 @@
+---
+- name: Create Group and enable Ingress 22 for SSH, 3389 for RDP, 5985 and 5986 for WinRM
+  ec2_group:
+    name: "{{ sg_name }}"
+    description: "Ansible Managed Security Group: {{ sg_name }} "
+    region: "{{ aws_region }}"
+    rules:
+      - proto: tcp
+        ports:
+          - 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: SSH
+      - proto: tcp
+        ports:
+          - 5985
+        cidr_ip: 0.0.0.0/0
+        rule_desc: WinRM_HTTP
+      - proto: tcp
+        ports:
+          - 5986
+        cidr_ip: 0.0.0.0/0
+        rule_desc: WinRM_HTTPS
+      - proto: tcp
+        ports:
+          - 3389
+        cidr_ip: 0.0.0.0/0
+        rule_desc: RDP
+  register: created_sg
+
+- name: Create Ingress Rules on the SG
+  ec2_group:
+    name: "{{ sg_name }}"
+    description: "Ansible Managed Security Group: {{ sg_name }} "
+    region: "{{ aws_region }}"
+    purge_rules: false
+    rules:
+      - proto: tcp
+        ports:
+          - "{{ item }}"
+        cidr_ip: 0.0.0.0/0
+  with_items: "{{ tcp_ingress_ports }}"
+  when: tcp_ingress_ports is defined 
+
+- name: Create Ingress Rules on the SG for custom port
+  ec2_group:
+    name: "{{ sg_name }}"
+    description: "Ansible Managed Security Group: {{ sg_name }} "
+    region: "{{ aws_region }}"
+    purge_rules: false
+    rules:
+      - proto: tcp
+        ports:
+          - "{{ custom_port }}"
+        cidr_ip: 0.0.0.0/0
+  when: custom_port is defined 
+
+- name: Created SG ID
+  debug:
+    msg: Created SG ID is {{ created_sg['group_id'] }}
+
+- name: Setting stats for future tasks
+  set_stats:
+    data:
+      stat_sg_id: "{{ created_sg['group_id'] | default('') }}"
+  when: created_sg['group_id'] is defined

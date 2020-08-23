@@ -1,0 +1,7 @@
+---
+# defaults file for aws-gather-instance-details
+ec2_region: us-east-1
+#Instance Tags
+ec2_name_tag: Ansible_Created_EC2
+ec2_provisioner_tag: Ansible
+ec2_created_tag: "{{ ansible_date_time.date }}"

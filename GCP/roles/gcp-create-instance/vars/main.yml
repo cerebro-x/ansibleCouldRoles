@@ -1,0 +1,23 @@
+---
+# vars file for gcp-create-instance
+
+#General Vars
+gcp_zone: "{{ gcp_zone_choice | default('us-central1-a') }}"
+gcp_region: "{{ gcp_region_choice | default('us-central1') }}"
+gcp_name_tag: "{{ gcp_name_tag_choice | default('ansible-created') }}"
+
+#Compute Vars
+gcp_machine_type: "{{ gcp_machine_type_choice | default('f1-micro') }}"
+gcp_provisioner_tag: "{{ gcp_provisioner_tag_choice | default('Ansible') }}"
+
+instance_os: "{{ instance_os_choice | default('rhel7') }}"
+
+startup_scripts:
+  win2012: userdata_win.ps.j2
+  rhel7: userdata_linux.sh.j2
+
+gcp_startup_script : "{{ startup_scripts[instance_os] }}"
+
+#Firewall Vars
+ssh_port: "{{ ssh_port_choice | default(22) }}"
+winrm_port: "{{ winrm_port_choice | default(5986) }}"

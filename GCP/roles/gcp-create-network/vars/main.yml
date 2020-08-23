@@ -1,0 +1,13 @@
+---
+# vars file for gcp-create-network
+#General Vars
+gcp_zone: "{{ gcp_zone_choice | default('us-central1-a') }}"
+gcp_region: "{{ gcp_region_choice | default('us-central1') }}"
+gcp_name_tag: "{{ gcp_name_tag_choice | default('ansible-created') }}"
+
+#Disk Vars
+instance_os: "{{ instance_os_choice | default('rhel7') }}"
+
+#Firewall Vars
+ssh_port: "{{ ssh_port_choice | default(22) }}"
+winrm_port: "{{ winrm_port_choice | default(5986) }}"

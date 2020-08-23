@@ -1,0 +1,27 @@
+---
+- name: Using The following Public Key Material
+  debug:
+    var: keypair_material
+
+- name: Create or replace EC2 SSH key pair with the name {{ keypair_name }} using provided keypair_material
+  ec2_key:
+    name: "{{ keypair_name }}"
+    region: "{{ aws_region }}"
+    key_material: "{{ keypair_material }}"
+  register: created_key
+
+- name: Created Key Finger Print
+  debug:
+    var: created_key.key.fingerprint
+
+- name: Created Key Name
+  debug:
+    var: created_key.key.name
+
+- name: Setting stats for future tasks
+  set_stats:
+    data:
+      stat_keypair_name: "{{ created_key.key.name | default('') }}"
+  when: created_key.key.name is defined
+
+

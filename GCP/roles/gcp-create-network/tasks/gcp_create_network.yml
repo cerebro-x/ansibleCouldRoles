@@ -1,0 +1,36 @@
+---
+- name: Create a new network for the new compute instance
+  gcp_compute_network:
+    name: "{{ gcp_name_tag }}"
+    state: present
+  register: created_network
+
+- name: Open Port {{ ssh_port }} for SSH for all instances on the Network
+  gcp_compute_firewall:
+    name: ssh
+    network: "{{ created_network }}"
+    allowed:
+    - ip_protocol: tcp
+      ports:
+      - '{{ ssh_port }}'
+    source_ranges: "0.0.0.0/0"
+    state: present
+  when:  "{{ 'win' not in instance_os }}"
+
+- name: Open Port {{ winrm_port }} for winRM for all instances on the Network
+  gcp_compute_firewall:
+    name: winrm
+    network: "{{ created_network }}"
+    allowed:
+    - ip_protocol: tcp
+      ports:
+      - '{{ winrm_port }}'
+    source_ranges: "0.0.0.0/0"
+    state: present
+  when: "{{ 'win' in instance_os }}"
+
+- name: setting stats for newly created Network
+  set_stats:
+    data:
+      network: "{{ created_network }}"
+  when: created_network is defined

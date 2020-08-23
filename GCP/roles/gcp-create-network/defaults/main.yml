@@ -1,0 +1,12 @@
+---
+# defaults file for gcp-create-network
+#General Vars
+gcp_zone: us-central1-a
+gcp_region: us-central1
+gcp_name_tag: ansible-created
+
+#Disk Vars
+instance_os: rhel7
+
+#Firewall Vars
+ssh_port: 22

@@ -1,0 +1,13 @@
+---
+- name: Create a public IP address for the instance {{ gcp_name_tag }}
+  gcp_compute_address:
+    name: "{{ gcp_name_tag }}"
+    region: "{{ gcp_region }}"
+    state: present
+  register: created_address
+
+- name: setting stats for newly created IP Address
+  set_stats:
+    data:
+      address: "{{ created_address }}"
+  when: created_address is defined

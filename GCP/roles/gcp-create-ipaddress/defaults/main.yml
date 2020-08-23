@@ -1,0 +1,6 @@
+---
+# defaults file for gcp-create-ipaddress
+#General Vars
+gcp_zone: us-central1-a
+gcp_region: us-central1
+gcp_name_tag: ansible-created

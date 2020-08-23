@@ -1,0 +1,4 @@
+---
+# tasks file for aws-create-keypair
+- name: Create Key Pair {{ keypair_name }}
+  include_tasks: aws_create_keypair.yml

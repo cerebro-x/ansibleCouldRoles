@@ -1,0 +1,22 @@
+---
+# defaults file for gcp-create-instance
+#General Vars
+gcp_zone: us-central1-a
+gcp_region: us-central1
+gcp_name_tag: ansible-created
+
+#Compute Vars
+gcp_machine_type: f1-micro
+gcp_provisioner_tag: Ansible
+
+instance_os: rhel7
+
+startup_scripts:
+  win2012: userdata_win.ps.j2
+  rhel7: userdata_linux.sh.j2
+
+gcp_startup_script : userdata_linux.sh.j2
+
+#Firewall Vars
+ssh_port: 22
+winrm_port: 5986

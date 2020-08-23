@@ -1,0 +1,6 @@
+---
+# vars file for gcp-create-ipaddress
+#General Vars
+gcp_zone: "{{ gcp_zone_choice | default('us-central1-a') }}"
+gcp_region: "{{ gcp_region_choice | default('us-central1') }}"
+gcp_name_tag: "{{ gcp_name_tag_choice | default('ansible-created') }}"

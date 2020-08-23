@@ -1,0 +1,10 @@
+---
+# vars file for aws-create-sg
+aws_region: "{{ aws_region_choice | default('us-east-1') }}"
+
+# SG variables 
+sg_name: "{{ sg_name_choice | default('Created_By_Ansible_SG') }}"
+tcp_ingress_ports:
+  - 8080
+  - 443
+  - 80

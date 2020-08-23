@@ -1,0 +1,7 @@
+---
+# vars file for aws-gather-instance-details
+ec2_region: "{{ ec2_region_choice | default('us-east-1') }}"
+#Instance Tags
+ec2_name_tag: "{{ ec2_name_tag_choice | default('Ansible_Created_EC2') }}"
+ec2_provisioner_tag: "{{ ec2_provisioner_tag_choice | default('Ansible') }}"
+ec2_created_tag: "{{ ec2_created_tag_choice | default(ansible_date_time.date) }}"

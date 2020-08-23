@@ -1,0 +1,5 @@
+---
+# tasks file for aws-gather-instance-details
+- name: Gather Instance Details and create in-memory inventory group
+  include_tasks: aws_gather_instance_details.yml
+

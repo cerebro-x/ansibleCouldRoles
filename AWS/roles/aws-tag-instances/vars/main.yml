@@ -1,0 +1,5 @@
+---
+# vars file for aws-tag-instances
+aws_region: "{{ aws_region_choice | default('us-east-1') }}"
+ec2_keypair_name: "{{ stat_keypair_name | default('Ansible_Created_Keypair') }}"
+ec2_name_tag: "{{ ec2_name_tag_choice | default('Ansible_Created_EC2') }}"

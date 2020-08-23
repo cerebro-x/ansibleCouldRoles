@@ -1,0 +1,4 @@
+---
+# tasks file for gcp-create-network
+- name: Create a Network for the GCP Instance
+  include_tasks: gcp_create_network.yml

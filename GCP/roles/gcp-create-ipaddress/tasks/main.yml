@@ -1,0 +1,4 @@
+---
+# tasks file for gcp-create-ipaddress
+ - name: Create an external IP Address for the GCP Instance
+   include_tasks: gcp_create_IP_address.yml

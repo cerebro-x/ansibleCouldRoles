@@ -1,0 +1,15 @@
+---
+# tasks file for gcp-destroy-instance
+- name: Destroy GCP Instance
+  include_tasks: gcp_destroy_instance.yml
+
+- name: release the external IP Address for the GCP Instance
+  include_tasks: gcp_release_IP_address.yml
+
+- name: destroy the Network for the GCP Instance
+  include_tasks: gcp_destroy_network.yml
+
+
+
+
+
