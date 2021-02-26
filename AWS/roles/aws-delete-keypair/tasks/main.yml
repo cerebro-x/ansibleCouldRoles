@@ -1,0 +1,4 @@
+---
+# tasks file for aws-delete-keypair
+- name: Create Key Pair {{ keypair_name }}
+  include_tasks: aws_delete_keypair.yml

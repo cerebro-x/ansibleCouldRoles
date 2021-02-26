@@ -1,0 +1,13 @@
+---
+- name: Using The following Public Key Material
+  debug:
+    var: keypair_material
+
+- name: Create or replace EC2 SSH key pair with the name {{ keypair_name }} using provided keypair_material
+  ec2_key:
+    name: "{{ keypair_name }}"
+    region: "{{ aws_region }}"
+    key_material: "{{ keypair_material }}"
+    state: absent
+
+

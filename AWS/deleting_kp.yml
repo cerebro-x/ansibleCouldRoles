@@ -1,0 +1,5 @@
+---
+- name: Deleting Key Pair
+  hosts: localhost
+  roles:
+    - aws-delete-keypair
