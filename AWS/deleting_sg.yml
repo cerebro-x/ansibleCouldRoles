@@ -1,0 +1,5 @@
+---
+- name: Deleting Security Group
+  hosts: localhost
+  roles:
+    - aws-delete-sg

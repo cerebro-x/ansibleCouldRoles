@@ -1,0 +1,8 @@
+---
+# defaults file for aws-delete-sg
+aws_region: us-east-1
+
+# SG variables 
+sg_name: Created_By_Ansible_SG
+tcp_ingress_ports:
+  - 22
