@@ -1,5 +1,5 @@
 - name: Delete Security Group for {{ sg_name }} WebServers
   ec2_group:
     name: "{{ sg_name }}"
-    region: "{{ ec2_region }}"
+    region: "{{ aws_region }}"
     state: absent
