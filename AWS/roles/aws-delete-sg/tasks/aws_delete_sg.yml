@@ -1,4 +1,4 @@
-- name: Delete Security Group for {{ sg_name }} WebServers
+- name: Delete Security Group {{ sg_name }}
   ec2_group:
     name: "{{ sg_name }}"
     region: "{{ aws_region }}"
