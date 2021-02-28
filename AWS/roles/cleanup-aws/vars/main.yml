@@ -1,6 +1,7 @@
 ---
-# vars file for register-route53
+# vars file for cleanup aws
 ec2_name_tag: "{{ ec2_name_tag_choice | default('Ansible_Created_EC2') }}"
 ec2_sg_name_tag: "{{ ec2_sg_name_tag_choice | default('Created_By_Ansible') }}"
+ec2_kp_name: "{{ ec2_kp_name_choice | default('Ansible_Created_Keypair') }}"
 ec2_provisioner_tag: Ansible
 ec2_region: "{{ ec2_region_choice | default('us-east-1') }}"
