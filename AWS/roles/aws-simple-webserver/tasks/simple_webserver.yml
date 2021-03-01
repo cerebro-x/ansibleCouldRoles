@@ -1,26 +1,37 @@
 ---
+#- name: Installing required packages
+#  yum:
+#    name: "{{ item }}"
+#    state: latest
+#  loop: "{{ packages }}"
+
+#- name: Ensure services are started and enabled
+#  service:
+#    name: "{{ item }}"
+#    state: started
+#    enabled: true
+#  loop: "{{ services }}"
+
 - name: Installing required packages
   yum:
-    name: "{{ item }}"
+    name: httpd
     state: latest
-  loop: "{{ packages }}"
 
 - name: Ensure services are started and enabled
   service:
-    name: "{{ item }}"
+    name: httpd
     state: started
     enabled: true
-  loop: "{{ services }}"
 
 - name: Creating simple index file
   template:
     src: index.html.j2
     dest: "{{ web_home }}/index.html"
 
-- name: Ensure firewalld is allowing traffic
-  firewalld:
-    service: http
-    permanent: true
-    immediate: true
-    state: enabled
+#- name: Ensure firewalld is allowing traffic
+#  firewalld:
+#    service: http
+#    permanent: true
+#    immediate: true
+#    state: enabled
 
