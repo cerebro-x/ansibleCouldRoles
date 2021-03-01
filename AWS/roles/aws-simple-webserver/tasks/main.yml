@@ -1,0 +1,4 @@
+---
+# Creating a simple webserver
+- name: Creating simple webserver
+  include_tasks: simple_webserver.yml

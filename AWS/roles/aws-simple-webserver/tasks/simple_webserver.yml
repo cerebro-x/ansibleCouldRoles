@@ -1,0 +1,24 @@
+---
+- name: Installing httpd
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ packages }}"
+
+- name: Creating simple index file
+  template:
+    src: index.html.j2
+    dest: "{{ web_home }}/index.html"
+
+- name: Ensure firewalld is allowing traffic
+  firewalld:
+    service: http
+    permanement: true
+    immediate: true
+    state: enabled
+
+- name: Ensure httpd is started and enabled
+  service:
+    name: httpd
+    state: started
+    enabled: true

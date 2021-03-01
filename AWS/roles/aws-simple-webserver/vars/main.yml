@@ -1,0 +1,5 @@
+---
+packages:
+  - httpd
+
+web_home: /var/www/html

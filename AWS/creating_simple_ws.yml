@@ -1,0 +1,5 @@
+---
+- name: Deploying simple webserver
+  hosts: "{{ ws_host }}"
+  roles:
+    - aws-simple-webserver
