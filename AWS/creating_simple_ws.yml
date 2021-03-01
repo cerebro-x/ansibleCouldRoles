@@ -1,5 +1,6 @@
 ---
 - name: Deploying simple webserver
-  hosts: "{{ ws_host }}"
+  hosts: aws_ec2
+  become: true
   roles:
     - aws-simple-webserver
