@@ -1,5 +1,10 @@
 ---
 packages:
   - httpd
+  - firewalld
 
+services:
+  - httpd 
+  - firewalld
+  
 web_home: /var/www/html
