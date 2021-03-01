@@ -20,7 +20,7 @@
 - name: Ensure firewalld is allowing traffic
   firewalld:
     service: http
-    permanement: true
+    permanent: true
     immediate: true
     state: enabled
 
